@@ -22,9 +22,9 @@ public class BankAccount {
 
     @Override
     public String toString() {
-
-        return  "%1$tr %1$tF %2$-10s %3$-10.2f".formatted( LocalDateTime.now(), type, initialAmount);
-
+        return  "%1$tr %1$tF %2$-10s %3$-10.2f $".formatted( LocalDateTime.now(), type, initialAmount);
     }
+
+
 
 }
