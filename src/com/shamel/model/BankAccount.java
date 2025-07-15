@@ -10,23 +10,43 @@ public class BankAccount {
         CHECKING, SAVING
     }
 
-    private Map<Long, Transaction> transactios;
 
     private final Type type;
-    private double initialAmount;
+    private double balance;
 
-    BankAccount(Type type, double initialAmount) {
+    // the transaction map collection for each customer's
+    // account, mapped by each transaction id
+    private Map<Long, Transaction> transactions;
+
+
+
+    BankAccount(Type type, double balance) {
         this.type = type;
-        this.initialAmount = initialAmount;
+        this.balance = balance;
     }
 
     BankAccount(BankAccount account){
-        this(account.type, account.initialAmount);
+        this(account.type, account.balance);
     }
 
     @Override
     public String toString() {
-        return  "%1$tr %1$tF %2$-10s %3$-10.2f $".formatted( LocalDateTime.now(), type, initialAmount);
+        return  "%1$tr %1$tF %2$-10s %3$-10.2f $".formatted( LocalDateTime.now(), type, balance);
+    }
+    
+    // adding a method that allows the customer to perform a transaction from each account:
+    public void commitTransaction(int routingNumber,int customerId, long transactionId
+                                  , double transactionAmount){
+
+        Transaction t = new Transaction( routingNumber,  customerId,
+         transactionId,  transactionAmount);
+        transactions.put(transactionId, t);
+        adjustBalance(transactionAmount);
+
+    }
+
+    private void adjustBalance(double transactionAmount){
+        balance = balance - transactionAmount;
     }
 
     // making a defensive copy of the customer's transactions:
@@ -39,20 +59,7 @@ public class BankAccount {
         return copyTransaction;
     }
 
-    // adding a method that allows the customer to perform a transaction from each account:
-
-    public void commitTransaction(int routingNumber, int customerId,
-                                  long transactionId, double transactionAmount){
-
-        Transaction t = new Transaction( routingNumber,  customerId,
-         transactionId,  transactionAmount);
-        transactios.put(transactionId, t);
-        adjustBalance(transactionAmount);
-
+    public Type getType() {
+        return type;
     }
-
-    private void adjustBalance(double transactionAmount){
-        initialAmount = initialAmount - transactionAmount;
-    }
-
 }
