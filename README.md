@@ -32,7 +32,7 @@ This project simulates a basic bank environment, handling customers, bank accoun
 
 - Strong adherence to **OOP principles**: Abstraction, Encapsulation, Separation of Concerns.
 - Clean class responsibilities and interactions.
-- Logical and maintainable structure ideal for beginner to intermediate projects.
+- Logical and maintainable structure ideal for  intermediate projects.
 
 ---
 
