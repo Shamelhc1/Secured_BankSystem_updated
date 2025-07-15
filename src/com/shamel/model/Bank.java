@@ -11,7 +11,7 @@ public class Bank {
 
     //Transaction ids should be assigned by using the
     // lastTransactionId field on this instance of the bank.
-    private long lastTransactionId;
+    private Long lastTransactionId;
 
     private static long transactionid_increment;
 
@@ -42,15 +42,28 @@ public class Bank {
 
     }
 
+    void doTransaction(String id, BankAccount.Type type, double amount){
+
+        BankCustomer customer = customers.get(id);
+        lastTransactionId = (lastTransactionId==  null) ? 1 : lastTransactionId++;
+
+        customer.getAccount(type).
+                commitTransaction(routingNumber, Integer.parseInt(id) ,lastTransactionId,
+                        amount);
+        System.out.println();
+
+
+    }
+
+
     @Override
     public String toString() {
 
         String customersString= (customers == null) ? "" :  customers.toString().replace(", ","\n")
                 .replace("[","").replace("]", "");
 
-        return "Bank{" +
-                "customers=" + customers +
-                '}';
+        return customersString;
+
     }
 
     // The main method should not have access to the commit transaction code on the BankAccount itself.
@@ -77,12 +90,13 @@ public class Bank {
         private Map<Long, Transaction> transactions;
 
 
-        BankAccount(Type type, double balance) {
+        private BankAccount(Type type, double balance) {
             this.type = type;
             this.balance = balance;
+            transactions = new HashMap<>();
         }
 
-        BankAccount(BankAccount account) {
+         BankAccount(BankAccount account) {
             this(account.type, account.balance);
         }
 
@@ -111,7 +125,7 @@ public class Bank {
             // The balance will not be allowed to go below zero
 
             if ((balance + transactionAmount) < 0) {
-                System.out.println("Insuficient founds for this transaction.");
+                System.out.println("Insufficient founds for this transaction.");
                 return false;
             } else {
                 balance = balance + transactionAmount;

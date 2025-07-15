@@ -49,7 +49,7 @@ public class BankCustomer {
     }
 
     // Return a defensive copy of the accounts list:
-    public List<Bank.BankAccount> getAccountList() {
+    List<Bank.BankAccount> getAccountList() {
         List<Bank.BankAccount> copyList = new ArrayList<>();
         accountList.forEach(account ->
                         copyList.add(account)
@@ -60,12 +60,12 @@ public class BankCustomer {
     
 //    
 
-    public Bank.BankAccount getAccount(Bank.BankAccount.Type type){
+     Bank.BankAccount getAccount(Bank.BankAccount.Type type){
         
         for (Bank.BankAccount account : accountList){
             if(account.getType().equals(type)){
-                Bank.BankAccount copy = new Bank.BankAccount(account);
-                return copy;
+
+                return account;
             }
         }
         return null;
