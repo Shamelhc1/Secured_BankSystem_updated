@@ -38,9 +38,13 @@ public class BankAccount {
     public void commitTransaction(int routingNumber,int customerId, long transactionId
                                   , double transactionAmount){
 
+        // creating the transaction:
         Transaction t = new Transaction( routingNumber,  customerId,
          transactionId,  transactionAmount);
+
+        // adding the transaction to the account's transaction collection
         transactions.put(transactionId, t);
+
         adjustBalance(transactionAmount);
 
     }
