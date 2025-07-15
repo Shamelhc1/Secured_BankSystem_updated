@@ -7,19 +7,20 @@ public class BankCustomer {
 
     private final String customerName;
     private final int customerId;
-    private static int ID_maker = 10000;
+    private static int ID_maker = 10000_00000;
+
 
     private List<BankAccount> accountList = new ArrayList<>();
 
     // The constructor for Bank customer.
     // Account list will be defensively deep-copied for data integrity purposes.
+    // Package private constructors - codes in other packages must not instantiate a customer.
 
-    public BankCustomer(String customerName, List<BankAccount> accountList) {
+    BankCustomer(String customerName, List<BankAccount> accountList) {
         this(customerName, ID_maker, accountList);
     }
 
-
-    private BankCustomer(String customerName, int customerId, List<BankAccount> accountList) {
+    BankCustomer(String customerName, int customerId, List<BankAccount> accountList) {
 
         this.customerName = customerName;
         this.customerId = ID_maker++;
@@ -40,4 +41,35 @@ public class BankCustomer {
 
         return "%-10s%10s\n%s".formatted(customerName, "ID:" + customerId, s);
     }
+
+    // Returns the customer id as a 15-digit string, with leading zeros:
+
+    public String getCustomerId() {
+        return "00000" +Integer.toString( customerId);
+    }
+
+    // Return a defensive copy of the accounts list:
+    public List<BankAccount> getAccountList() {
+        List<BankAccount> copyList = new ArrayList<>();
+        accountList.forEach(account ->
+                        copyList.add(account)
+        );
+
+        return copyList;
+    }
+
+//    Include a getAccount method to return just one account,
+//    based on account type argument passes, either SAVINGS or CHECKING.
+
+    public BankAccount getAccount(BankAccount.Type type){
+        for (BankAccount account : accountList){
+            if(account.getType().equals(type)){
+                BankAccount copy = new BankAccount(account);
+                return copy;
+            }
+        }
+        return null;
+    }
+
+
 }
