@@ -6,6 +6,10 @@ This project simulates a basic bank environment, handling customers, bank accoun
 
 ---
 
+UML Class digram:
+![Uploading BankSystem_updated.png…]()
+
+
 ## 📦 Features Implemented
 
 - **Encapsulated Object Model**:
