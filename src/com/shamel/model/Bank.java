@@ -3,7 +3,7 @@ package com.shamel.model;
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class Bank {
+public final class Bank {
 
     // the routing number is unique to each bank
     // this is logically a final and immutable field
@@ -75,7 +75,7 @@ public class Bank {
     //The only reason bankAccount was kept static is for ease of demonstration here.
 
 
-    static class BankAccount {
+    static final class BankAccount {
 
         enum Type {
             CHECKING, SAVING

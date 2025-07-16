@@ -25,9 +25,6 @@ public class Main {
         System.out.println("-".repeat(30));
         System.out.println(bmo);
 
-
-
-
     }
 
 

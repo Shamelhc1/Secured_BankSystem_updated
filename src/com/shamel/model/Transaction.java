@@ -1,6 +1,6 @@
 package com.shamel.model;
 
-public class Transaction {
+public final class Transaction {
 
     private  int routingNumber;
     private  int customerId;

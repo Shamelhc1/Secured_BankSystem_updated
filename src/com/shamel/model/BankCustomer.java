@@ -3,7 +3,7 @@ package com.shamel.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BankCustomer {
+public final class BankCustomer {
 
     private final String customerName;
     private final int customerId;
