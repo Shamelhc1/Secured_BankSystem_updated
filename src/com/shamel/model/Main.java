@@ -8,10 +8,16 @@ public class Main {
 
         Bank bmo = new Bank(new Random().nextInt());
 
-        bmo.addCustomer("Donald Trump", 10000, 50000);
+        bmo.addCustomer("Harry S. Truman", 10000, 50000);
         bmo.addCustomer("Nikita Khrushchev", 10000, 50000);
 
         System.out.println(bmo);
+
+        bmo.doTransaction("000001000000000",Bank.BankAccount.Type.CHECKING,
+                4560  );
+
+        bmo.doTransaction("000001000000000",Bank.BankAccount.Type.SAVING,
+                4560  );
 
         bmo.doTransaction("000001000000001", Bank.BankAccount.Type.CHECKING,
                 1995);

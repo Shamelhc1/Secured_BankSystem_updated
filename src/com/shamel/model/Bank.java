@@ -29,7 +29,7 @@ public class Bank {
                      double savingInitialDeposit){
 
         BankAccount checking = new BankAccount(BankAccount.Type.CHECKING,checkingInitialDeposit );
-        BankAccount savings = new BankAccount(BankAccount.Type.CHECKING,savingInitialDeposit );
+        BankAccount savings = new BankAccount(BankAccount.Type.SAVING,savingInitialDeposit );
 
 
         BankCustomer Customer = new BankCustomer(name, new ArrayList<>(List.of(
@@ -117,6 +117,7 @@ public class Bank {
                 // adding the transaction to the account's transaction collection
                 transactions.put(transactionId, t);
             }
+
         }
 
 
