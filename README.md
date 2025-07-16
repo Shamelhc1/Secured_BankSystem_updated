@@ -7,8 +7,8 @@ This project simulates a basic bank environment, handling customers, bank accoun
 ---
 
 UML Class digram:
-[](https://github.com/Shamelhc1/Secured_BankSystem_updated/blob/master/BankSystem_UML.png)
-](https://github.com/Shamelhc1/Secured_BankSystem_updated/blob/master/BankSystem_UML.png)- The Bank Account Class is an inner class of the Bank Class.
+https://github.com/Shamelhc1/Secured_BankSystem_updated/blob/master/BankSystem_UML.png
+The Bank Account Class is an inner class of the Bank Class.
 
 
 ## 📦 Features Implemented
